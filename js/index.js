@@ -603,6 +603,8 @@ main: for (let i = 0, j = 5; i <= j; i++) {
 //   }
 // }
 
+// g
+
 table: for (let i = 1; i < 10; i++) {
   if (i === 1) {
     continue
@@ -634,6 +636,168 @@ function usePrefix(role) {
 
   return sayInChat
 }
-
 const sendMsg = usePrefix('Admin')
 sendMsg('Як воно викликалось?')
+
+// a
+
+// те що обчислюється у функції є параметрами, але вони називаються аргументами, коли функція викликається
+
+// function calcSpce(
+//   amount = 0,
+//   unit = console.log(
+//     'parametr unit is not set. default is px',
+//   ) || 'px',
+// ) {
+//   // задаємо значення параметрів за замовченням після знаку =
+//   return `${amount * 4}${unit}` // функція повинна щось повертати
+// }
+// console.log(calcSpce(3)) // якщо не задано якись аргумент, то буде значення за замовченням
+
+// b player
+
+function playTrackById(trackId) {
+  /// отримати файл треку та програти його
+}
+
+function stopTrackById(trackId) {
+  /// отримати файл треку та зупинити його
+  console.log(
+    `отримати файл треку з  ID ${trackId} та поставити його на паузу`,
+  )
+}
+
+function play(trackName, trackId) {
+  console.log(`Запускаємо ${trackName}`)
+  playTrackById(trackId)
+}
+
+function end(oldTrackName, newTrackNname) {
+  console.log(`завершили грати ${oldTrackName}`)
+  console.log(`Наступний трек ${newTrackNname}`)
+}
+
+function pausePlay(currentTrackName) {
+  console.log(`Трек ${currentTrackName} на паузі`)
+  reloadDataTrack()
+  play
+}
+
+// с
+
+let counter = 0
+function reloadDataTrack(amount) {
+  counter++
+  if (amount <= 0) {
+    console.log(`Дані оновлені ${counter} разів`)
+    counter = 0
+  } else {
+    console.log(`Спроба оновлення ${counter}`)
+    /// певний код для оновлення даних
+    reloadDataTrack(amount - 1) // РЕКУРСІЯ
+  }
+}
+
+reloadDataTrack(5)
+
+function pauseStopByTrack(trackName, trackId) {
+  let isPause = null
+  //   let originTrackName = trackName
+  //   let originTrackId = trackId
+  return () => {
+    //function pauseStop забираємо перед дужками//
+    // міняємо назву функції та її об'явлення на стрілковий запис
+
+    if (isPause == true) {
+      return
+    }
+
+    stopTrackById(trackId) // каррірована функція (до якої немає доступу з зовні блоку), вкладена функція для внутрішнього використання всередині іншої функції
+    console.log(`Трек ${trackName} на паузі`) // композиція функцій, коли параметри первинної функції використовуються всередені іншої вкладеної функції як аргументи
+    isPause = true
+  }
+}
+const pauseStop123 = pauseStopByTrack('IT - Hello wold', 10)
+pauseStop123()
+const pauseStop456 = pauseStopByTrack(
+  'IT - Console Log',
+  11,
+)
+pauseStop456()
+pauseStop456()
+pauseStop456()
+
+const runCommnd = function (command, errorFn) {
+  const result = command()
+  if (!result) {
+    return errorFn()
+  }
+}
+
+runCommnd(
+  function () {
+    console.log('Зауск команди')
+    return 1 - 1
+  },
+  function () {
+    console.log('Помилка')
+  },
+)
+
+const testFunc = () => {
+  if (true) {
+    var test = 10
+    test += 30
+  }
+  return test
+}
+
+console.log(testFunc())
+
+// d
+console.log('Приклад мемоізації попереднього результату')
+const memocalcSpace = (
+  oldAmount = null,
+  oldUnit = null,
+  oldResult = null,
+) => {
+  return (amount = 0, unit = 'px') => {
+    if (oldAmount === amount && oldUnit === unit) {
+      console.log('Memo')
+      return oldResult
+    }
+    oldResult = `${amount * 4}${unit}`
+    oldAmount = amount
+    oldUnit = unit
+
+    return oldResult
+  }
+}
+
+const calcSpace = memocalcSpace()
+console.log(calcSpace(5))
+console.log(calcSpace(5)) // результат буде взято з попереднього запиту
+
+const getSpaceFromDesign = (componentName) => {
+  switch (componentName) {
+    case 'button':
+      return 4
+    case 'card':
+      return 3
+    default:
+      return 2
+  }
+}
+
+const isMobile = true
+
+const amount = getSpaceFromDesign('button')
+const amountMobile = isMobile ? amount / 2 : amount
+const amountInPx = calcSpace(amountMobile)
+// або
+const calcSpaceFromDesign = (componentName) => {
+  const result = getSpaceFromDesign(componentName)
+  return calcSpace(isMobile ? result / 2 : result)
+}
+
+console.log(calcSpaceFromDesign('card'))
