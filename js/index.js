@@ -162,13 +162,13 @@ console.log('Lesson 7')
 
 // & обидва
 console.log('Обидва &')
-let a = 11
-let b = 12
-let c = a & b
+// let a = 11
+// let b = 12
+// let c = a & b
 
-console.log(a, a.toString(2))
-console.log(b, b.toString(2))
-console.log(c, c.toString(2))
+// console.log(a, a.toString(2))
+// console.log(b, b.toString(2))
+// console.log(c, c.toString(2))
 
 const canRead = true
 const canWrite = false
@@ -207,26 +207,27 @@ console.log(
 )
 // | Мінімум один
 console.log('Мінімум один |')
-let d = 11
-let e = 12
-let f = d | e
+// let d = 11
+// let e = 12
+// let f = d | e
 
-console.log(d, d.toString(2))
-console.log(e, e.toString(2))
-console.log(f, f.toString(2))
+// console.log(d, d.toString(2))
+// console.log(e, e.toString(2))
+// console.log(f, f.toString(2))
 
 // ^ лише один
 console.log('Лише один ^')
-let g = 9
-let h = 6
-let i = g ^ h
+// let g = 9
+// let h = 6
+// let i = g ^ h
 
-console.log(g, g.toString(2))
-console.log(h, h.toString(2))
-console.log(i, i.toString(2))
+// console.log(g, g.toString(2))
+// console.log(h, h.toString(2))
+// console.log(i, i.toString(2))
 
 // ~ протилежне
 let j
+let i = 1
 console.log('Протилежне ~')
 console.log(i, i.toString(2))
 j = ~i
@@ -888,4 +889,92 @@ const link = `https://${domain}/${path}`
 let link1 = redirectToPath(path)
 let link2 = getUrl(link1)
 
-// console.log(link === link2)
+console.log(link === link2)
+
+// Lesson 12
+console.log(' ')
+console.log('Lesson 12')
+
+const a = Number(10)
+const b = 10
+const c = Number('10')
+
+console.log(a === b && b === c && a === c)
+
+// Number.EPSILON
+const d = 0.1
+const e = 0.2
+const f = 0.3
+
+const g = d + e
+
+console.log(g)
+console.log(Number.EPSILON)
+console.log(
+  g - f < Number.EPSILON && f - g < Number.EPSILON,
+)
+
+// Number.MAX_SAFE_INTEGER
+// Number.MIN_SAFE_INTEGER
+// Number.MIN_VALUE
+// Number.MAX_VALUE
+
+console.log(Number.MIN_SAFE_INTEGER)
+console.log(Number.MAX_SAFE_INTEGER)
+
+console.log(Number.MIN_VALUE)
+console.log(Number.MAX_VALUE)
+
+// Number.isInteger
+
+function reviewNumber(num) {
+  if (isNaN(num)) {
+    return console.log('Is not a number', num)
+  } else if (!num && num !== 0) {
+    return console.log('Bad number', num)
+  } else if (!Number.isInteger(num)) {
+    return console.log('Дробове число', num)
+  } else if (!Number.isSafeInteger(num)) {
+    return console.log('Небезпечне число', num)
+  }
+
+  return console.log('Ціле число', num)
+}
+
+reviewNumber(Number.MAX_SAFE_INTEGER + 12)
+
+// Скорочений запис
+
+const a1 = Number(10.567)
+const a2 = a1.toFixed(2)
+const a3 = a2.length
+console.log(a3)
+
+console.log((10.567).toFixed(2).length)
+
+const a4 = Number('1.9999')
+const a5 = parseInt('232543 sdf')
+
+console.log(a4, a5)
+
+// .toFixed(x) x - кількість знаків після коми
+const a6 = 1.543657657
+const a7 = parseFloat(a6.toFixed(2))
+console.log(a7)
+
+// .toPrecision(x) x - кількість знаків у числі
+const a8 = 15839.896856
+const a9 = parseFloat(a8.toPrecision(1))
+const a10 = parseFloat(a8.toPrecision(6))
+const a11 = parseFloat(a8.toPrecision(4))
+console.log(a9, a11, a10)
+
+//toExponential(x) x - знаків після коми у експоненті
+const a12 = 755466999999999
+const a13 = a12.toExponential(4)
+console.log(a13)
+
+// .toString(x) x - система запису числа
+const a14 = 8766987
+const a15 = a14.toString(2)
+console.log(a15)
