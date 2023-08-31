@@ -978,3 +978,89 @@ console.log(a13)
 const a14 = 8766987
 const a15 = a14.toString(2)
 console.log(a15)
+
+// Lesson 13
+console.log(' ')
+console.log('Lesson 13')
+
+//String
+console.log(String(6435679))
+
+// .length
+const b1 = 'HelloWorld'
+console.log(b1.length)
+
+// String.fromCodePoint - пудтримує більше символів, ніж .fromCharCode()
+console.log(String.fromCodePoint(128514))
+
+//.charCodeAt .codePointAt зворотні функції
+const b2 = '0ǂ234567'
+console.log(b2.codePointAt(1))
+console.log(String.fromCodePoint(450))
+
+// String.raw
+console.log(`www.test.com/home/catalog/category/new`)
+console.log(`www.test.com\home\catalog\category\new`) // деякі спецсимволи windows виводяться обробляються некоректно
+console.log(
+  String.raw`www.test.com\home\catalog\category\new`, // виведе "сирий" рядок
+)
+
+// .concat
+console.log(b1.concat(', ', b2, ' ', '!'))
+
+// .includes
+console.log(b1)
+console.log(b1.includes('lo'))
+console.log(b1.includes('lo', 4))
+console.log(b1.includes('o', 6))
+
+// .idexOf  .lastIndexOf
+console.log(b1.indexOf('o', 6))
+console.log(b1.indexOf('o'))
+console.log(b1.indexOf('q', 6))
+console.log(b1.indexOf('r', 6))
+
+console.log(b1.lastIndexOf('o'))
+
+// .startWith .endWith
+console.log(b1.startsWith('He'))
+console.log(b1.startsWith('He', 2))
+console.log(b1.startsWith('lo', 3))
+console.log(b1.endsWith('ld'))
+console.log(b1.endsWith('ld', 8))
+console.log(b1.endsWith('ld', 10))
+
+// .at .charAt
+console.log(b1.at('0'))
+console.log(b1.at('1'))
+console.log(b1.at('2'))
+console.log(b1.at('3'))
+console.log(b1.at('4'))
+
+console.log(b1.at('9'))
+console.log(b1.at('10'))
+
+// .padStart .padEnd
+const c1 = 'HelloWorld' // 10 знаків
+console.log(c1.padStart(15, 'Start'))
+console.log(c1.padEnd(13, 'End'))
+console.log(c1.padEnd(15, 'End'))
+
+// .repeat
+console.log(c1.repeat(3))
+
+// .slice .sustring
+console.log(c1.slice(3))
+console.log(c1.slice(-3))
+console.log(c1.slice(3, 6))
+
+// .toLowerCase .toUpperCase
+
+console.log(c1.toLowerCase())
+console.log(c1.toUpperCase())
+
+// .trim .trimStart .trimEnd1
+const d1 = '    User Name     '
+console.log(d1.trim(), '1')
+console.log(d1.trimStart(), '1')
+console.log(d1.trimEnd(), '1')
