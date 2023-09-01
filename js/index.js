@@ -1260,3 +1260,30 @@ console.log(
     18,
   ]),
 )
+
+// Позакласні самостійні заняття
+console.log('')
+console.log('Позакласні самостійні заняття')
+console.log('Різниця між === та ==')
+console.log('')
+console.log(
+  '=== більш точніше порівняння (враховує типізацію):',
+)
+console.log(`1 === '1'`, 1 === '1')
+console.log(`1 !== '1'`, 1 !== '1')
+console.log(`null === undefined`, null === undefined)
+console.log('')
+console.log(
+  `== більш грубе порівняння (не враховує типізацію):`,
+)
+console.log(`1 == '1'`, 1 == '1')
+console.log(`1 != '1'`, 1 != '1')
+console.log(`null == undefined`, null == undefined)
+console.log('')
+console.log(
+  `More details you can see here:`,
+  `https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#:~:text=the%20equality%20operators-,.,-x`,
+)
+console.log(
+  'P.S. Better copy link and paste it in your browser',
+)
