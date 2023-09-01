@@ -484,24 +484,24 @@ console.log('Lesson 9')
 // 3
 
 // a
-let sum = 0
-let count = 1
+// let sum = 0
+// let count = 1
 
-while (count <= 5) {
-  sum += count
-  console.log(count, sum)
-  count++
-}
+// while (count <= 5) {
+//   sum += count
+//   console.log(count, sum)
+//   count++
+// }
 
 // b
-sum = 0
-count = 1
+// sum = 0
+// count = 1
 
-do {
-  sum += count
-  console.log(count, sum)
-  count++
-} while (count <= 5)
+// do {
+//   sum += count
+//   console.log(count, sum)
+//   count++
+// } while (count <= 5)
 
 // c
 let container = 5
@@ -518,42 +518,42 @@ console.log(storage)
 
 // d bicycle
 
-let start = 40
-let goal = 100
+// let start = 40
+// let goal = 100
 
-let step = 0
-let set = 8
-let rest = 10
+// let step = 0
+// let set = 8
+// let rest = 10
 
-do {
-  start++
+// do {
+//   start++
 
-  if (step === 0) {
-    console.log('Початок тренування')
-  }
+//   if (step === 0) {
+//     console.log('Початок тренування')
+//   }
 
-  step++
+//   step++
 
-  if (step === goal || start === goal) {
-    console.log('Кінец тренування')
-    break
-  }
+//   if (step === goal || start === goal) {
+//     console.log('Кінец тренування')
+//     break
+//   }
 
-  if (step === goal / 2) {
-    console.log(`Середина тренування`)
-  }
+//   if (step === goal / 2) {
+//     console.log(`Середина тренування`)
+//   }
 
-  if (step % rest === 0) {
-    console.log(`Зробіть перерву`)
-    continue
-  }
+//   if (step % rest === 0) {
+//     console.log(`Зробіть перерву`)
+//     continue
+//   }
 
-  console.log(`Поточний прогрес ${step}`)
+//   console.log(`Поточний прогрес ${step}`)
 
-  if (step % set === 0) {
-    console.log(`Ви зробили `, step / set, ` сет(-и/-ів)`)
-  }
-} while (step < goal && start < goal)
+//   if (step % set === 0) {
+//     console.log(`Ви зробили `, step / set, ` сет(-и/-ів)`)
+//   }
+// } while (step < goal && start < goal)
 
 // e
 let q = 0
@@ -1064,3 +1064,199 @@ const d1 = '    User Name     '
 console.log(d1.trim(), '1')
 console.log(d1.trimStart(), '1')
 console.log(d1.trimEnd(), '1')
+
+// Lesson 14
+console.log(' ')
+console.log('Lesson 14')
+
+const x1 = 1
+const x2 = 2
+const x3 = 3
+
+const getOne = () => 1
+
+let list = [
+  function first() {},
+  100,
+  'Text',
+  null,
+  undefined,
+  1 + 2,
+  5 < 6,
+  getOne(),
+]
+console.log(list)
+
+let listX = [x1, x2, x3]
+console.log(listX)
+
+const testArr = Array(5)
+console.log(testArr)
+testArr[0] = 'Start'
+testArr[1] = 2
+testArr[20] = 20
+console.log(testArr)
+console.log('++++++++++++++++++++++++++')
+// .length
+console.log(testArr.length)
+testArr[testArr.length] = 21
+testArr[testArr.length] = 22
+console.log(testArr.length)
+console.log(testArr)
+
+console.log(testArr[testArr.length - 1]) // виведе останній елемент масиву
+
+testArr['test'] = 'Test123' // комірка має назву test не рекомендується так робити
+console.log(testArr)
+console.log(testArr.test)
+console.log(testArr.length) // не бачить іменовану комірку
+console.log(testArr[testArr.length - 1]) // не виведе іменовану комірку
+console.log('++++++++++++++++++++++++++')
+//delete
+
+delete testArr[20]
+console.log(testArr)
+console.log('++++++++++++++++++++++++++')
+// вкладені масиви
+const big = [[[1], [2, 3, 4, 5], [6]], [[7]], [[8]]]
+console.log(big[0][1][2])
+console.log('++++++++++++++++++++++++++')
+// for of  for in for i,j
+
+const location = [
+  [100, 200],
+  [105, 205],
+  [110, 190],
+]
+console.log(' ')
+console.log(
+  'for of - найкоротший запис зі значеннями масиву',
+)
+for (const point of location) {
+  //   console.log(point)
+  for (const coord of point) {
+    console.log(coord)
+  }
+}
+console.log(' ')
+console.log('for in -  для роботи з індексами')
+for (const pointIndex in location) {
+  //   console.log(location[pointIndex])
+  for (const coordIndex in location[pointIndex]) {
+    console.log(location[pointIndex][coordIndex])
+  }
+}
+console.log(' ')
+console.log('for i,j - класичний цикл з індексами')
+for (let i = 0; i < location.length; i++) {
+  // console.log(location[i])
+  for (let j = 0; j < location[i].length; j++)
+    console.log(location[i][j])
+}
+
+//порівняння масивів === за допомогою .toString String
+console.log('++++++++++++++++++++++++++')
+
+const l1 = [1, 2, 3]
+const l2 = [1, 2, 3]
+
+console.log(l1 === l2)
+console.log(l1.toString === l2.toString)
+console.log(String(l1) === String(l2))
+
+// посилання на масив замість копіювання при присоєнні значення
+console.log('++++++++++++++++++++++++++')
+const l3 = [5, 6, 7]
+const l4 = l3
+console.log(l3, l4)
+delete l3[0]
+console.log(l3, l4)
+
+//деструктуризація
+console.log('++++++++++++++++++++++++++')
+console.log('деструктуризація')
+// location[location.length] = [120, 180] // додаємо 4 локацію
+console.log(location)
+// довгий варіант
+const loc1 = location[0]
+const loc2 = location[1]
+console.log(loc1, loc2)
+// швидкий варіант
+const [xy1, xy2] = location
+console.log(xy1, xy2)
+
+const [point1, , point3] = location // пропуск значення
+console.log(point1, point3)
+
+const [item1, ...rest] = location // залишок масиву у одну змінну
+console.log(item1, rest)
+
+const [[p1, p2], r3, r4 = ['New X', 'New Y']] = rest //якщо не існує значення r4(четвертої локації у location, тоді присвоїть значення за замовчуванням після знаку =)
+console.log(r4)
+console.log(p1, p2) // кокретні координати 2 локації (першої у rest)
+
+const [...l5] = l1
+const l6 = [...l1]
+const l7 = [100, ...(l1 || [])] // якщо l1 не існує, тоді присвоїть пустий масив
+console.log(
+  l5.toString === l6.toString &&
+    l6.toString === l1.toString,
+)
+console.log(l1, l7)
+
+let l8 = [7, 8, 9]
+let l9 = [4, 5, 6]
+console.log(l8, l9)
+;[l8, l9] = [l9, l8] //міняємо місцями значення
+console.log(l8, l9)
+
+function printFullname(name, surname, lastname) {
+  return `${name} ${surname} ${lastname}`
+}
+console.log(printFullname('Ivan', 'Ivanenko', 'Ivanov'))
+
+function printFullname2(...arg) {
+  // console.log(arg)
+  return arg.toString()
+  //   return `${name} ${surname} ${lastname}`
+}
+console.log(printFullname2('Ivan', 'Ivanenko', 'Ivanov'))
+
+function sumAllNum(...nums) {
+  let sum = 0
+  for (const n of nums) {
+    sum += n
+  }
+
+  return [sum, nums.length]
+}
+const [sum, numLength] = sumAllNum(
+  1,
+  2,
+  3,
+  435,
+  5,
+  5,
+  6,
+  63,
+  66,
+  67676,
+)
+console.log(sum, numLength)
+
+function printFullname3([name, surname, lastname, ...arg]) {
+  //   console.log(arg)
+  //   return arg.toString()
+  return `${name} ${surname} ${lastname} ${
+    arg.length ? `(${arg.toString()})` : ''
+  }`
+}
+console.log(
+  printFullname3([
+    'Ivan',
+    'Ivanenko',
+    'Ivanov',
+    'Admin',
+    18,
+  ]),
+)
