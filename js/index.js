@@ -1288,225 +1288,225 @@
 //   'P.S. Better copy link and paste it in your browser',
 // )
 
-// Lesson 15
-console.log(' ')
-console.log('Lesson 15')
-console.log(`=====================================`)
+// Lesson 15  Об'єкти
+// console.log(' ')
+// console.log('Lesson 15')
+// console.log(`=====================================`)
 
-const key = 'Key 1'
+// const key = 'Key 1'
 
-const a = {
-  ключ: 'значення',
-  x: 100, // змінна оголошується прямо у об'єкті
-  ['text']: 'HelloWorld',
-  [key]: 'Some text', //змінна у квадратних дужках повинна бути оголошенною раніше. використовується для динамічних ключів
-  [console.log()]: 'Console Log', // функція у якості ключа без попереднього оголошення поверне undefined у назву ключа
-}
+// const a = {
+//   ключ: 'значення',
+//   x: 100, // змінна оголошується прямо у об'єкті
+//   ['text']: 'HelloWorld',
+//   [key]: 'Some text', //змінна у квадратних дужках повинна бути оголошенною раніше. використовується для динамічних ключів
+//   [console.log()]: 'Console Log', // функція у якості ключа без попереднього оголошення поверне undefined у назву ключа
+// }
 
-console.log(a.x)
-console.log(a.text)
-console.log(a[key]) // звернення до динамічного ключа лише через квадратні дужки
-console.log(a[console.log()])
-console.log(a)
+// console.log(a.x)
+// console.log(a.text)
+// console.log(a[key]) // звернення до динамічного ключа лише через квадратні дужки
+// console.log(a[console.log()])
+// console.log(a)
 
-// пустий об'єкт
-console.log(`=====================================`)
-console.log(`Створюємо пустий об'єкт та виводимо його`)
-const b = Object()
-console.log(b)
-const b1 = {}
-console.log(b1)
+// // пустий об'єкт
+// console.log(`=====================================`)
+// console.log(`Створюємо пустий об'єкт та виводимо його`)
+// const b = Object()
+// console.log(b)
+// const b1 = {}
+// console.log(b1)
 
-//delete
-console.log(`=====================================`)
-delete a.text
-console.log(a)
+// //delete
+// console.log(`=====================================`)
+// delete a.text
+// console.log(a)
 
-//вкладений об'єкт
-console.log(`=====================================`)
-const sex = 'Gender'
-const info = 'About'
-console.log(`вкладений об'єкт`)
-const a1 = {
-  ключ: 'значення',
-  x: 100,
-  [key]: 'Some text',
-  //вкладений об'єкт з динамічним клюем info
-  [info]: {
-    name: 'Ivan',
-    age: 35,
-    [sex]: 'male',
-  },
-  // вкладений об'єкт з клюем info
-  info: {
-    name: 'Ann',
-    age: 35,
-    [sex]: 'female',
-  },
-}
+// //вкладений об'єкт
+// console.log(`=====================================`)
+// const sex = 'Gender'
+// const info = 'About'
+// console.log(`вкладений об'єкт`)
+// const a1 = {
+//   ключ: 'значення',
+//   x: 100,
+//   [key]: 'Some text',
+//   //вкладений об'єкт з динамічним клюем info
+//   [info]: {
+//     name: 'Ivan',
+//     age: 35,
+//     [sex]: 'male',
+//   },
+//   // вкладений об'єкт з клюем info
+//   info: {
+//     name: 'Ann',
+//     age: 35,
+//     [sex]: 'female',
+//   },
+// }
 
-console.log(a1[info].age)
-console.log(a1[info][sex])
-console.log(a1.info[sex])
-console.log(a1.info.name)
-console.log(a1)
+// console.log(a1[info].age)
+// console.log(a1[info][sex])
+// console.log(a1.info[sex])
+// console.log(a1.info.name)
+// console.log(a1)
 
-//for in
-console.log(`=====================================`)
-console.log('for in:')
-const person = {
-  name: 'Іван',
-  age: 25,
-  occupation: 'Розробник програмного забеспечення',
-  address: {
-    city: 'Київ',
-    street: 'Вулиця Шевченка',
-    houseNumber: 10,
-  },
-}
+// //for in
+// console.log(`=====================================`)
+// console.log('for in:')
+// const person = {
+//   name: 'Іван',
+//   age: 25,
+//   occupation: 'Розробник програмного забеспечення',
+//   address: {
+//     city: 'Київ',
+//     street: 'Вулиця Шевченка',
+//     houseNumber: 10,
+//   },
+// }
 
-for (const key in person) {
-  console.log(key)
-}
+// for (const key in person) {
+//   console.log(key)
+// }
 
-for (const key in person) {
-  const item = person[key]
+// for (const key in person) {
+//   const item = person[key]
 
-  if (typeof item === 'object') {
-    for (const key2 in item) {
-      console.log(item[key2])
-    }
-  } else {
-    console.log(item)
-  }
-}
+//   if (typeof item === 'object') {
+//     for (const key2 in item) {
+//       console.log(item[key2])
+//     }
+//   } else {
+//     console.log(item)
+//   }
+// }
 
-// compare /  порівняння
-console.log(`=====================================`)
-console.log(`Порівняння об'єктів`)
-const a3 = { test: 1 }
-const b3 = { test: 1 }
-const c3 = a3 //передається послання на об'єкт
-console.log(a3 === b3)
-console.log(a3 === c3)
+// // compare /  порівняння
+// console.log(`=====================================`)
+// console.log(`Порівняння об'єктів`)
+// const a3 = { test: 1 }
+// const b3 = { test: 1 }
+// const c3 = a3 //передається послання на об'єкт
+// console.log(a3 === b3)
+// console.log(a3 === c3)
 
-// деструктуризація
-console.log(`=====================================`)
-console.log(`деструктуризація`)
-const {
-  age,
-  name,
-  address: { city, street, zipcode = 41023 },
-  ...rest
-} = person
-console.log(age, name, zipcode, city, street)
-console.log(rest)
+// // деструктуризація
+// console.log(`=====================================`)
+// console.log(`деструктуризація`)
+// const {
+//   age,
+//   name,
+//   address: { city, street, zipcode = 41023 },
+//   ...rest
+// } = person
+// console.log(age, name, zipcode, city, street)
+// console.log(rest)
 
-// через person
-function getAddress({
-  address: {
-    zipcode = 41023,
-    city,
-    street = 'Не вказано',
-    houseNumber,
-  },
-}) {
-  return `Ваша адреса: ${zipcode} ${city} ${street} ${houseNumber}`
-}
-const test = getAddress(person)
-console.log(test)
+// // через person
+// function getAddress({
+//   address: {
+//     zipcode = 41023,
+//     city,
+//     street = 'Не вказано',
+//     houseNumber,
+//   },
+// }) {
+//   return `Ваша адреса: ${zipcode} ${city} ${street} ${houseNumber}`
+// }
+// const test = getAddress(person)
+// console.log(test)
 
-// без person тільки внутрішня змінна функції adress
-function getAddress2({ address }) {
-  if (address) {
-    const {
-      zipcode = 10000,
-      city,
-      street = 'NOT SET',
-      houseNumber = 10,
-    } = address
-    return `Ваша адреса: ${zipcode} ${city} ${street} ${houseNumber}`
-  }
+// // без person тільки внутрішня змінна функції adress
+// function getAddress2({ address }) {
+//   if (address) {
+//     const {
+//       zipcode = 10000,
+//       city,
+//       street = 'NOT SET',
+//       houseNumber = 10,
+//     } = address
+//     return `Ваша адреса: ${zipcode} ${city} ${street} ${houseNumber}`
+//   }
 
-  return 'Нема даних'
-}
+//   return 'Нема даних'
+// }
 
-const test2 = getAddress2({
-  address: { street: 'Hello', city: 'Kyiv' },
-})
-console.log(test2)
+// const test2 = getAddress2({
+//   address: { street: 'Hello', city: 'Kyiv' },
+// })
+// console.log(test2)
 
-// Додавання даних у об'єкт
-console.log(`=====================================`)
-console.log(`додавання у об'єкт даних`)
-const role = {
-  value: 'admin',
-  status: 3,
-}
+// // Додавання даних у об'єкт
+// console.log(`=====================================`)
+// console.log(`додавання у об'єкт даних`)
+// const role = {
+//   value: 'admin',
+//   status: 3,
+// }
 
-const person2 = {
-  name: 'Іван',
-  age: 25,
-  occupation: 'Розробник програмного забеспечення',
-  ...role, // тільки значення іншого об'єкту role
+// const person2 = {
+//   name: 'Іван',
+//   age: 25,
+//   occupation: 'Розробник програмного забеспечення',
+//   ...role, // тільки значення іншого об'єкту role
 
-  address: {
-    city: 'Київ',
-    street: 'Вулиця Шевченка',
-    houseNumber: 10,
-  },
-  getAddress: function () {
-    // функція як значення
-    return this.address // звернення до даних всередині об'єкта у якому така функція за допомогою this (не працює напряму зі стрілковими функціями)
-  },
-}
-console.log(person2)
+//   address: {
+//     city: 'Київ',
+//     street: 'Вулиця Шевченка',
+//     houseNumber: 10,
+//   },
+//   getAddress: function () {
+//     // функція як значення
+//     return this.address // звернення до даних всередині об'єкта у якому така функція за допомогою this (не працює напряму зі стрілковими функціями)
+//   },
+// }
+// console.log(person2)
 
-const person3 = {
-  name: 'Іван',
-  age: 25,
-  occupation: 'Розробник програмного забеспечення',
-  role, // якщо окремою властивісттю (об'єктом)
+// const person3 = {
+//   name: 'Іван',
+//   age: 25,
+//   occupation: 'Розробник програмного забеспечення',
+//   role, // якщо окремою властивісттю (об'єктом)
 
-  //варіанти:
-  // role: role, - варіант попереднього запису
-  // info: role, - варіант з іншим ключем
+//   //варіанти:
+//   // role: role, - варіант попереднього запису
+//   // info: role, - варіант з іншим ключем
 
-  address: {
-    city: 'Київ',
-    street: 'Вулиця Шевченка',
-    houseNumber: 10,
-  },
-}
-console.log(person3)
+//   address: {
+//     city: 'Київ',
+//     street: 'Вулиця Шевченка',
+//     houseNumber: 10,
+//   },
+// }
+// console.log(person3)
 
-// в - перевірка наявності елементу в об'єкті
-console.log(`=====================================`)
-console.log(`перевірка наявності елементу в об'єкті`)
+// // в - перевірка наявності елементу в об'єкті
+// console.log(`=====================================`)
+// console.log(`перевірка наявності елементу в об'єкті`)
 
-console.log(!!person2.value)
-console.log(!!person2.surname)
+// console.log(!!person2.value)
+// console.log(!!person2.surname)
 
-console.log('value' in person2)
-console.log('surname' in person2)
+// console.log('value' in person2)
+// console.log('surname' in person2)
 
-// функція як значення витягає дані за допомогою this
-console.log(`=====================================`)
-console.log(
-  `функція як значення витягає дані за допомогою this`,
-)
-console.log(person2.getAddress())
+// // функція як значення витягає дані за допомогою this
+// console.log(`=====================================`)
+// console.log(
+//   `функція як значення витягає дані за допомогою this`,
+// )
+// console.log(person2.getAddress())
 
-// Літерал
-console.log(`=====================================`)
-console.log(
-  `Літерал - створення зміних без використання конструктора`,
-)
+// // Літерал
+// console.log(`=====================================`)
+// console.log(
+//   `Літерал - створення зміних без використання конструктора`,
+// )
 
-const s = String('Test') // створення за допомогою конструктора
-console.log(s)
-const s1 = 'Test' // Використання літералу
-console.log(s1)
+// const s = String('Test') // створення за допомогою конструктора
+// console.log(s)
+// const s1 = 'Test' // Використання літералу
+// console.log(s1)
 
 // Будь-які дані у JS - то є об'єкт!
 
@@ -1536,3 +1536,182 @@ console.log(s1)
 
 // Test.hello = 'Hello' // додавання значення змінної у функцію як у об'єкт
 // console.log(Test.hello)
+
+// Lesson 16  Об'єкти
+console.log(' ')
+console.log('Lesson 16')
+console.log(`=====================================`)
+console.log('Symbol')
+
+// const a = {
+//   name: 'Olga',
+//   age: 34,
+// }
+// console.log(a)
+
+// const key = 'name'
+// a[key] = 'user'
+// console.log(a)
+
+const phoneBook = {
+  0: 1,
+  olga: '+380931234567',
+}
+function addToPhoneBook(phone, id) {
+  const key = Symbol(id + phoneBook[0])
+  phoneBook[key] = phone
+  phoneBook[0]++
+}
+addToPhoneBook('+380937654321', 'olga') // інша Ольга з іншим номером
+//...
+addToPhoneBook('+380631234567', 'olga') // ще одна Ольга з іншим номером
+//
+console.log(phoneBook)
+
+const phoneBook2 = {
+  Kate: '+380939234567',
+}
+function addToPhoneBook2(phone, id) {
+  const key = Symbol(id)
+  phoneBook2[key] = phone
+  return key //  буде передано до змінної при її створенні через запуск функції
+}
+const kate1Id = addToPhoneBook2('+380939654321', 'kate') // інша Катя з іншим номером  отримує key при звертанні до функції
+//...
+const kate2Id = addToPhoneBook2('+380639234567', 'kate') // ще одна Катя з іншим номером отримує інший key при звертанні до функції
+//
+console.log(phoneBook2)
+console.log('Зверення до даних конкретної Каті:')
+console.log(phoneBook2[kate1Id])
+console.log(
+  'Звернення до конкретної Каті через description',
+)
+console.log(kate1Id.description)
+
+console.log('')
+
+console.log(`=====================================`)
+console.log(
+  'Перезапис Symbol.to та витягання ID через Symbol.keyFor',
+)
+
+// const user = {
+//   name: 'Vika',
+//   id: 328746873,
+//   bookId: null,
+
+//   getPhone(book) {
+//     return book[this.bookId]
+//   },
+// }
+// const phoneBook3 = {
+//   vika: '+3807777777',
+// }
+// function addToPhoneBook3(phone, user) {
+//   const symId = Symbol.for(user.id)
+//   phoneBook3[symId] = phone
+//   user.bookId = symId
+// }
+// addToPhoneBook3('+380935555555', user)
+// addToPhoneBook3('+380930000000', user)
+// console.log(phoneBook3)
+// console.log(user.getPhone(phoneBook3))
+
+// const symId = user.bookId
+// console.log(Symbol.keyFor(symId))
+
+//порівняння символів
+console.log(`=====================================`)
+console.log('порівняння символів')
+const sym1 = Symbol('test')
+const sym2 = Symbol('test')
+console.log(sym1 === sym2)
+
+// Створення неунікальних символів
+console.log(`=====================================`)
+console.log(
+  'Створення неунікальних символів через Symbol.for',
+)
+const a = Symbol('1')
+const b = Symbol('1')
+console.log(a === b)
+console.log(String(a) === String(b))
+console.log(a.toString === b.toString)
+console.log(a.description === b.description)
+
+const a2 = Symbol.for('2')
+const b2 = Symbol.for('2')
+console.log(a2 === b2)
+
+//цикл for in/of з Symbol у ключах та Символьний ітератор
+console.log(`=====================================`)
+const user = {
+  name: 'Vika',
+  id: 328746873,
+  bookId: null,
+
+  getPhone(book) {
+    return book[this.bookId]
+  },
+}
+const phoneBook3 = {
+  me: '+3807777777',
+  name: 'Phone Book',
+}
+function addToPhoneBook3(phone, user) {
+  const symId = Symbol.for(user.id)
+  phoneBook3[symId] = phone
+  user.bookId = symId
+}
+addToPhoneBook3('+380935555555', user)
+addToPhoneBook3('+380930000000', user)
+console.log(phoneBook3)
+
+//звичайні цикли не працюють коректно
+
+for (const index in phoneBook3) {
+  console.log(index)
+}
+
+// for (const item of phoneBook3) {
+//   console.log(item)
+// }
+
+// Символьний ітератор Symbol.iterator
+console.log(`=====================================`)
+console.log('Символьний ітератор Symbol.iterator')
+
+let range = {
+  from: 1,
+  to: 5,
+
+  [Symbol.iterator]() {
+    this.current = this.from
+    return this
+  },
+
+  next() {
+    return this.current <= this.to
+      ? { done: false, value: this.current++ }
+      : { done: true }
+  },
+}
+
+for (let num of range) {
+  console.log(num)
+}
+
+// const iterator = range[Symbol.iterator]()
+// do {
+//   console.log(iterator.current)
+//   result = iterator.next()
+// } while (!result.done)
+
+// const arr = [1, 2, 3, 4, 5]
+// const iterator2 = arr[Symbol.iterator]()
+// do {
+//   result = iterator2.next()
+//   console.log(result.value)
+// } while (!result.done)
+
+//Додатково про символний ітератор
