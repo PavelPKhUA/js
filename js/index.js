@@ -164,7 +164,7 @@ console.log(' .filter(callbackFn, thisArg)')
 
 console.log(arr5)
 
-// const folteredArr = arr5.filter((value, index, array) => {})
+// const filteredArr = arr5.filter((value, index, array) => {})
 
 // const filteredArr = arr5.filter(
 //   (value, index, array) => value % 2 === 0,
