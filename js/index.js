@@ -234,3 +234,281 @@ const arr6 = [-1, 5, 0, 15, -3, 7, -9, 11, -5, 1]
 console.log(arr6)
 console.log(arr6.every((elem, index, array) => elem >= 0))
 console.log(arr6.some((elem, index, array) => elem >= 0))
+
+//lesson 18
+console.log('')
+console.log('Lesson 18 Операції з масивами частина ІІ')
+console.log(`=====================================`)
+console.log('find(callbackFn, thisArg)')
+
+const userList = [
+  { id: 1, name: 'Dima', age: 19 },
+  { id: 2, name: 'Ivan', age: 35 },
+  { id: 6412, name: 'Anton', age: 41 },
+]
+// let age = 0
+
+// const userBigAge = userList.find((elem, index, array) => {
+// 	if(elem.age > age) {
+// age = elem.age
+// }
+// })
+
+// const userBigAge = userList.find(
+//   ({ age: userAge }, index, array) => {
+//     if (userAge > age) {
+//       age = userAge
+//     }
+//   },
+// )
+
+// console.log(age)
+
+// const userBigAge2 = userList.sort((user1, user2) => {
+//   return user2.age - user1.age
+// })
+// console.log(userBigAge2[0])
+
+let minAge = 30
+const userBigAge3 = userList.find(
+  ({ age }) => age >= minAge,
+)
+console.log(userBigAge3)
+
+console.log(`=====================================`)
+console.log('findIndex(callbackFn, thisArg)')
+
+console.log(userList)
+const userBigAge4 = userList.findIndex(
+  ({ age }) => age >= minAge,
+)
+console.log(userBigAge4)
+console.log(`=====================================`)
+console.log('findLast, findLastIndex(callbackFn, thisArg)')
+const userBigAge5 = userList.findLast(
+  ({ age }) => age >= minAge,
+)
+console.log(userBigAge5)
+
+const userBigAge6 = userList.findLastIndex(
+  ({ age }) => age >= minAge,
+)
+console.log(userBigAge6)
+
+console.log(`=====================================`)
+console.log('.keys(), .values(), .next ')
+
+console.log(userList)
+console.log(userList.keys())
+console.log(userList.values())
+
+const iter = userList.keys()
+for (const elem of iter) {
+  console.log(elem)
+}
+
+const iter2 = userList.values()
+for (const elem of iter2) {
+  console.log(elem)
+}
+
+const iter3 = userList.values()
+console.log(iter3)
+const result = iter3.next()
+console.log(result)
+const result2 = iter3.next()
+console.log(result2)
+const result3 = iter3.next()
+console.log(result3)
+const result4 = iter3.next()
+console.log(result4)
+
+console.log(`=====================================`)
+console.log('join')
+
+// console.log(userList.toString()) // [object Object],[object Object],[object Object]
+
+const arr7 = ['Apple', 'Hotdog', 'Bread', 'Milk']
+console.log(arr7.toString())
+console.log(arr7.join(', '))
+console.log(arr7.join('... '))
+console.log(arr7.join(' -> '))
+console.log(arr7.join(''))
+console.log(arr7.join())
+
+console.log(`=====================================`)
+console.log(
+  'splice(start, deleteCount, item1, item2, itemN)',
+)
+const arr8 = [...arr7]
+const arr9 = [...arr8]
+console.log(arr7)
+const arrSmall = arr7.splice(1, 2, 'Tea', 'Cheese')
+console.log(arrSmall)
+console.log(arr7)
+console.log(
+  'щоб витягти значення без змін старого масиву (без видалення та без додавання нових елементів)',
+)
+console.log(arr8)
+const arrSmall2 = [...arr8].splice(1, 2, 'Tea', 'Cheese')
+console.log(arrSmall2)
+console.log(arr8)
+console.log(
+  'Якщо не видаляти нічого (deleteCount = 0), а просто додати',
+)
+const arrSmall3 = arr9.splice(1, 0, ...userList)
+console.log(arrSmall3) // масив буде пустим
+console.log(arr9)
+
+console.log(`=====================================`)
+console.log('slice(start, end) не змінює вхідний масив')
+console.log(arr8)
+const arrSmall4 = arr8.slice(1, 3)
+console.log(arrSmall4)
+console.log(arr8)
+
+console.log(`=====================================`)
+console.log('reduce(callbackFn, initialValue)')
+console.log(
+  'callbackFn(accumulator, currentValue, currentIndex, array) => {}, initialValue',
+)
+
+console.log(userList)
+const result5 = userList.reduce(
+  (num, user, userIndex, array) => {
+    // accumulator, currentValue, currentIndex, array
+    console.log(num, user.age)
+    return user.age > num ? user.age : num
+  },
+  0, // initValue
+)
+console.log(`${result5} - найбільший вік користувача`)
+
+const userList2 = [
+  { id: 1, name: 'Dima', age: 19, balance: 300 },
+  { id: 2, name: 'Ivan', age: 35, balance: 0 },
+  { id: 6412, name: 'Anton', age: 41, balance: 10200 },
+]
+
+const totalBalance = userList2.reduce(
+  (num, user) => num + user.balance,
+  0,
+)
+console.log(totalBalance)
+
+console.log(`=====================================`)
+console.log('reduceRight(callbackFn, initialValue)')
+console.log(
+  'callbackFn(accumulator, currentValue, currentIndex, array) => {}, initialValue',
+)
+
+// .reduceRight = .reverse().reduce
+
+console.log(userList)
+const result6 = userList.reduceRight(
+  (num, user, userIndex, array) => {
+    console.log(num, user.age)
+    return user.age > num ? user.age : num
+  },
+  0,
+)
+console.log(`${result6} - найбільший вік користувача`)
+
+console.log(`=====================================`)
+console.log(
+  'map(callbackFn, thisArg) - (не / ? /змінює)*** існуючий масив',
+)
+
+console.log(userList2)
+// userList2.map((element, index, array) => {}, thisArg)
+const result7 = userList2.map((user, index, array) => {
+  return user.name
+})
+console.log(result7)
+console.log(result7.join(', '))
+
+const result8 = userList2.map((user, index, array) => {
+  user.balanceLimit = 1000 - user.balance
+  if (user.balanceLimit < 0) {
+    user.balanceLimit = 0
+  }
+  return user
+})
+console.log(result8)
+console.log(userList2)
+
+console.log(`=====================================`)
+console.log('flat(depth)')
+
+const flatArray = [[[[[[[[[[[[[[100]]]]]]]]]]]]]]
+console.log(flatArray.flat())
+console.log(flatArray.flat(30))
+
+const coordsArray = [
+  [
+    [
+      [100, 200],
+      [150, 200],
+    ],
+    [200, 205],
+  ],
+  [220, 230],
+  [430, 455],
+]
+console.log(coordsArray.flat(0))
+console.log(coordsArray.flat(1))
+console.log(coordsArray.flat(2))
+console.log(coordsArray.flat(3))
+
+console.log(`=====================================`)
+console.log('flatMap(callbackFn, thisArg)')
+
+const someArray = [
+  [100, 105],
+  [200, 210],
+  [150, 170],
+  [430, 500],
+]
+
+// .flatMap = .map().flat()
+
+console.log(someArray.map((el) => [...el, el[0] - el[1]]))
+console.log(
+  someArray.map((el) => [...el, el[0] - el[1]]).flat(),
+)
+console.log(
+  someArray.flatMap((el) => [...el, el[0] - el[1]]),
+)
+console.log(someArray) // *** .map не змінило існуючий масив
+console.log('')
+
+const someArray2 = [
+  [
+    [100, 105],
+    [200, 210],
+  ],
+  [
+    [150, 170],
+    [430, 500],
+  ],
+]
+
+const result9 = someArray2.flatMap((el) => {
+  //   console.log(el)
+  return el.map((it) => {
+    // console.log(it)
+    return it[0] - it[1]
+  })
+})
+// .flat()
+console.log(result9)
+console.log(someArray2)
+
+console.log(`=====================================`)
+console.log('forEach(callbackFn, thisArg)')
+
+console.log(result9)
+
+result9.forEach((elem, index, array) => {
+  console.log(elem)
+})
