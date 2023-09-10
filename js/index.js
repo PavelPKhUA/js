@@ -1,6 +1,6 @@
 console.log('Lesson 17 Операції з масивами частина І')
 console.log(`=====================================`)
-console.log('Array.from')
+console.log('Array.from(ArrayLike, (elem, index) => {})')
 
 console.log(Array.from('Hello World'))
 // console.log(Array.from('124534'))
