@@ -512,3 +512,146 @@ console.log(result9)
 result9.forEach((elem, index, array) => {
   console.log(elem)
 })
+
+console.log('')
+console.log(`Lesson 19 Операції з об'єктами`)
+console.log(`=====================================`)
+console.log(
+  'Object.assign(targetObj, sourseObj1, ...., sourseObjN)',
+)
+
+const article = {
+  info: {
+    title: 'My article',
+    description: 'This is info about article',
+  },
+  id: 105423,
+
+  categoryId: 1423,
+  likeAmount: 442,
+}
+
+articlePhoto = {
+  photoUrl: '...url',
+  photoId: 100,
+  photoType: 'big',
+}
+
+articleCommentsList = {
+  list: [
+    { id: 4323, user: 'Ivan', message: 'Rhenbq rjyntyn' },
+  ],
+}
+
+Object.assign(article, articlePhoto, articleCommentsList)
+console.log(article)
+
+console.log(`=====================================`)
+console.log('Object.entries(obj)')
+
+console.log(Object.entries(article.info))
+
+const ARTICLE_FIELD = {
+  title: 'ID статті',
+  description: 'Заголовок статті',
+}
+
+const fromList = Object.entries(article.info)
+const fromListLayout = fromList.map(([key, value]) => {
+  //   return `${ARTICLE_FIELD[key]} : ${value}`
+  //   return [ARTICLE_FIELD[key], value]
+  return `<p> <strong> ${ARTICLE_FIELD[key]} </strong> <br> <span> ${value} </span> </p>`
+})
+console.log(fromListLayout)
+
+console.log(`=====================================`)
+console.log('Object.fromEntries(value)')
+
+const objArr = [
+  ['id', 2243547],
+  ['title', 'My product name'],
+  ['price', 1230],
+]
+
+console.log(objArr)
+console.log(Object.fromEntries(objArr))
+
+console.log(`=====================================`)
+console.log('.hasOwnProperty(prop)')
+
+console.log(article)
+console.log(article.hasOwnProperty('id'))
+console.log(article.hasOwnProperty('book'))
+
+console.log(`=====================================`)
+console.log(
+  '.propertyIsEnumerable(prop)    cat it do for in?',
+)
+
+console.log(article.propertyIsEnumerable('id'))
+console.log(article.propertyIsEnumerable('list'))
+console.log(article.propertyIsEnumerable('ihasOwnProperty'))
+
+console.log(`=====================================`)
+console.log('Object.freeze(obj)')
+
+console.log(ARTICLE_FIELD)
+ARTICLE_FIELD.property = 'hello'
+console.log(ARTICLE_FIELD)
+
+delete ARTICLE_FIELD.property
+Object.freeze(ARTICLE_FIELD)
+ARTICLE_FIELD.property2 = 'Afer freeze'
+delete ARTICLE_FIELD.title
+console.log(ARTICLE_FIELD)
+
+console.log(`=====================================`)
+console.log('Object.isFrozen(obj)')
+
+console.log(Object.isFrozen(ARTICLE_FIELD))
+console.log(Object.isFrozen(article))
+
+console.log(`=====================================`)
+console.log('Object.preventExtensions(obj)')
+
+console.log(article)
+Object.preventExtensions(article)
+article.property = 'Add New Property' //can`t
+article.id = 6576465465434 // can if exist
+console.log(article)
+delete article.id // can
+console.log(article)
+
+console.log(`=====================================`)
+console.log('Object.isExtensible(obj)')
+
+console.log(Object.isExtensible(article))
+console.log(Object.isExtensible(articlePhoto))
+
+console.log(`=====================================`)
+console.log('Object.seal(obj) rename only existing')
+
+console.log(articlePhoto)
+Object.seal(articlePhoto)
+articlePhoto.property = 'New'
+articlePhoto.photoId = 101
+delete articlePhoto.photoId
+console.log(articlePhoto)
+
+console.log(`=====================================`)
+console.log('Object.isSealed(obj)')
+
+console.log(Object.isSealed(articlePhoto))
+console.log(Object.isSealed(ARTICLE_FIELD))
+console.log(Object.isSealed(article))
+console.log(Object.isExtensible(articlePhoto))
+
+console.log(`=====================================`)
+console.log('Object.keys(obj)')
+console.log(article)
+console.log(Object.keys(article))
+
+console.log(`=====================================`)
+console.log('Object.values(obj)')
+
+console.log(Object.values(article))
