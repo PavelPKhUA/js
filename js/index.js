@@ -655,3 +655,166 @@ console.log(`=====================================`)
 console.log('Object.values(obj)')
 
 console.log(Object.values(article))
+
+console.log('')
+console.log('Lesson 20 Множина Set')
+console.log(`=====================================`)
+console.log('new Set([value1, value2, ...., valueN])')
+
+const set = new Set(['123', 123, '123', null])
+console.log(set)
+const userIdList = new Set([
+  76432, 82349898, 8374987, 723424, 23445,
+])
+console.log(userIdList)
+
+console.log(`=====================================`)
+console.log('for, for of, forEach')
+
+for (const value of userIdList) {
+  console.log(value)
+}
+console.log(' .forEach(callbackFn, thisArg)')
+userIdList.forEach((value, key, set) => console.log(value))
+
+console.log(`=====================================`)
+console.log('.size')
+
+console.log(userIdList.size)
+
+console.log(`=====================================`)
+console.log('.add(value)')
+
+console.log(userIdList)
+console.log(userIdList.size)
+
+userIdList.add(23445) // вже існує, не додасть новий
+console.log(userIdList)
+console.log(userIdList.size)
+
+userIdList.add(64325823)
+console.log(userIdList)
+console.log(userIdList.size)
+
+console.log(`=====================================`)
+console.log('.delete(value)')
+
+userIdList.delete(64325823)
+console.log(userIdList)
+console.log(userIdList.size)
+
+console.log(`=====================================`)
+console.log('.has(value)')
+
+console.log(userIdList)
+console.log(userIdList.size)
+
+console.log(userIdList.has(64325823))
+console.log(userIdList.has(23445))
+
+const result1 = userIdList.delete(23445)
+const result10 = userIdList.delete('23445')
+
+console.log(result1, result10)
+
+console.log(userIdList)
+console.log(userIdList.size)
+
+console.log(`=====================================`)
+console.log('.clear()')
+
+console.log(set)
+set.clear()
+console.log(set)
+
+console.log(`=====================================`)
+console.log('.keys()')
+
+console.log(userIdList)
+const key = userIdList.keys()
+console.log(key)
+console.log(key.next().value)
+console.log(key.next().value)
+console.log(key.next().value)
+console.log(key.next().value)
+console.log(key.next().value)
+
+console.log(`=====================================`)
+console.log('.values()')
+
+console.log(userIdList)
+const iterator = userIdList.values()
+console.log(iterator)
+console.log(iterator.next().value)
+console.log(iterator.next().value)
+console.log(iterator.next().value)
+console.log(iterator.next().value)
+console.log(iterator.next().value)
+
+const valueList = userIdList.values()
+const arrayList = Array.from(valueList)
+console.log(arrayList)
+
+console.log(`=====================================`)
+console.log('.entries()')
+
+console.log(userIdList)
+const entry = userIdList.entries()
+console.log(entry)
+//
+
+const objOfEntry = Object.fromEntries(entry) // після першого звертання до ітератора він зникає
+console.log(objOfEntry)
+
+// console.log(entry.next().value) //  вже undefined, бо вже був виклик всього entry
+// console.log(entry.next().value)
+// console.log(entry.next().value)
+// console.log(entry.next().value)
+// console.log(entry.next().value)
+
+console.log(`=====================================`)
+console.log('Приклади використання множини')
+console.log('Приклад 1')
+
+const arr10 = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+const set10 = new Set(arr10)
+const arr11 = [...set10] // деструктуризація множини
+const arr12 = Array.from(set10.values()) // пряме перетворення
+const arr13 = Array.from(set10) // скорочений запис прямого перетворення
+console.log(arr11)
+console.log(arr12)
+console.log(arr13)
+
+console.log('Приклад 2')
+
+const categoryList = new Set()
+
+function addCategory(category) {
+  if (categoryList.has(category)) {
+    console.log('Ця категорія вже є')
+    return false
+  }
+  categoryList.add(category)
+  return true
+}
+console.log(addCategory('Name'))
+console.log(addCategory('Name'))
+console.log(addCategory('Adress'))
+
+console.log('Приклад 3')
+
+const students = [
+  { id: 1, name: 'John', course: 'Math' },
+  { id: 2, name: 'Jane', course: 'Science' },
+  { id: 3, name: 'Adam', course: 'Math' },
+  { id: 4, name: 'Eve', course: 'English' },
+  { id: 5, name: 'Kate', course: 'Science' },
+]
+
+// const course = students.map((student) => student.course)
+// console.log(course)
+// const courseList = new Set(course)
+const courseList = new Set(
+  students.map((student) => student.course),
+)
+console.log(Array.from(courseList))
