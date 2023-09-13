@@ -818,3 +818,201 @@ const courseList = new Set(
   students.map((student) => student.course),
 )
 console.log(Array.from(courseList))
+
+console.log('')
+console.log('Lesson 21 Словник Map')
+console.log(`=====================================`)
+console.log(`new Map ([  ['key', 'value']  ])`)
+
+const map = new Map()
+console.log(map)
+const dictionary = new Map([
+  ['color', 'red'],
+  ['size', '32px'],
+])
+console.log(dictionary)
+
+const obj3 = {
+  color: 'red',
+  size: 32 + 'px',
+}
+const button2 = new Map(Object.entries(obj3))
+console.log(button2)
+
+const set3 = new Set(['red', '32px'])
+const button3 = new Map(set3.entries())
+console.log(button3)
+
+const button4 = new Map(
+  Object.entries(Object.fromEntries(set3.entries())),
+)
+console.log(button4)
+
+console.log(`=====================================`)
+console.log(`.entries()`)
+
+console.log(button2.entries())
+
+console.log(`=====================================`)
+console.log(`.keys() values()`)
+
+const button = new Map([
+  ['color', 'red'],
+  ['size', '32px'],
+])
+const set2 = new Set(button)
+console.log(set2)
+const set4 = new Set(button.keys())
+console.log(set4)
+const set5 = new Set(button.values())
+console.log(set5)
+
+console.log(`=====================================`)
+console.log(`for (const [key, value]) of map`)
+
+const button5 = new Map([
+  ['color', 'red'],
+  ['size', '32px'],
+])
+for (const [key, value] of button5) {
+  console.log(key, value)
+}
+for (const elem of button5) {
+  console.log(elem)
+}
+for (const [key] of button5) {
+  console.log(key)
+}
+for (const [key, value] of button5) {
+  console.log(value)
+}
+
+console.log(`=====================================`)
+console.log(`for (const [key, value]) in ....`)
+
+for (const value in Object.fromEntries(button5.entries())) {
+  console.log(value)
+}
+
+console.log(`=====================================`)
+console.log(`.forEach(callbackFn, thisArg)`)
+
+button5.forEach((value, key, map) =>
+  console.log(value, key, map),
+)
+
+console.log(`=====================================`)
+console.log(`.size)`)
+
+console.log(button5.size)
+
+console.log(`=====================================`)
+console.log(`.set(key, value)  .get(key)`)
+
+button5.set('weight', 600)
+console.log(button5)
+console.log(button5.get('weight'))
+
+console.log(`=====================================`)
+console.log(`.delete(key)`)
+
+console.log(button5.delete('weight'))
+console.log(button5.delete('weight'))
+console.log(button5)
+
+console.log(`=====================================`)
+console.log(`.hay(key)`)
+
+console.log(button5.has('weight'))
+console.log(button5.has('color'))
+
+console.log(`=====================================`)
+console.log(`.clear()`)
+
+button5.clear()
+console.log(button5)
+
+console.log(`=====================================`)
+console.log(`Приклади використання словників`)
+console.log(`Приклад 1`)
+
+const LANG_LIST = {
+  UA: 'uk-UA',
+  EU: 'en-US',
+}
+
+const activeLang = LANG_LIST.EU
+
+const product = {
+  price: 100,
+  amount: 3,
+  info: new Map([
+    [
+      LANG_LIST.UA,
+      {
+        title: 'Заголовок',
+        info: 'Інформаця',
+      },
+    ],
+    [
+      LANG_LIST.EU,
+      {
+        title: 'Title',
+        info: 'Info',
+      },
+    ],
+  ]),
+}
+console.log(product)
+
+const info = product.info.get(activeLang)
+console.log(info)
+console.log(product.info.has(activeLang))
+
+console.log(`Приклад 2`)
+
+const user1 = {
+  id: 1234,
+  name: 'Ivan',
+}
+
+const user2 = {
+  id: 4321,
+  name: 'Anton',
+}
+
+const product1 = {
+  id: 54232,
+  title: 'Mobile phone',
+}
+
+const product2 = {
+  id: 51234,
+  title: 'Apple',
+}
+
+const userProduct = new Map()
+userProduct.set(user1, product1).set(user2, product2)
+console.log(userProduct)
+console.log(userProduct.has(user1))
+console.log(userProduct.get(user1))
+
+const productClientList = new Map()
+productClientList.set(product1, new Set())
+// const productClientList = new Map([[product1, new Set()]])
+console.log(productClientList)
+
+productClientList.set(
+  product1,
+  productClientList.get(product1).add(user1),
+),
+  console.log(productClientList)
+
+productClientList.set(
+  product1,
+  productClientList.get(product1).add(user2),
+),
+  console.log(productClientList)
+
+const has = productClientList.get(product1).has(user1)
+console.log(has)
