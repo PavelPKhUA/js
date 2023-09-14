@@ -1016,3 +1016,151 @@ productClientList.set(
 
 const has = productClientList.get(product1).has(user1)
 console.log(has)
+
+console.log(``)
+console.log('Lesson 21 JSON та URL')
+console.log(`=====================================`)
+console.log(`JSON.stringify(value, replacer, space)`)
+
+const roleField = 'roleName'
+const data = {
+  id: 1234,
+  login: 'user86513',
+  password: '12351erq@',
+  [roleField]: 'Admin',
+  go() {
+    // функції нема у форматі JSON, проускається при перетворенні
+    console.log('GO')
+  },
+  test1: {
+    test2: 78545,
+  },
+}
+
+console.log(data.toString())
+const jsonData = JSON.stringify(data)
+console.log(jsonData)
+
+const jsonData1 = JSON.stringify(data, (key, value) => {
+  //   console.log(key, value)
+  if (key === roleField) {
+    return null
+  }
+  if (typeof value === 'string') {
+    return value.toUpperCase()
+  }
+  if (typeof value === 'number') {
+    return value * 10
+  }
+  return value
+})
+console.log(jsonData1)
+
+const jsonData2 = JSON.stringify(
+  data,
+  (key, value) => {
+    //   console.log(key, value)
+    if (key === roleField) {
+      return null
+    }
+    if (typeof value === 'string') {
+      return value.toUpperCase()
+    }
+    if (typeof value === 'number') {
+      return value * 10
+    }
+    return value
+  },
+  4,
+)
+console.log(jsonData2)
+
+console.log(`=====================================`)
+console.log(`JSON.parse(text, reviver)`)
+
+console.log(jsonData)
+const parseData = JSON.parse(jsonData)
+console.log(parseData)
+
+const parseData2 = JSON.parse(jsonData2, (key, value) => {
+  //   console.log(key, value)
+  if (key === roleField) {
+    return 'Admin'
+  }
+  if (typeof value === 'string') {
+    return value.toLowerCase()
+  }
+  if (typeof value === 'number') {
+    return value / 10
+  }
+  return value
+})
+console.log(parseData2)
+
+console.log(`=====================================`)
+console.log(`URL.  new URL(url, base)`)
+
+const url = new URL('/about', 'https://balkantravel.me')
+const url1 = new URL(
+  'https://admin:434536475@balkantravel.me:4000/about?q=hello&q=helloWorld&oq=hello&aqs=chrome..69i57j46i433i512j46i131i433i512l5j0i131i433i512j0i512.2977j0j7&sourceid=chrome&ie=UTF-8#top',
+)
+const url2 = new URL('https://balkantravel.me/about')
+
+console.log(url)
+console.log(url2)
+
+console.log(url === url2)
+
+console.log(url1)
+
+console.log(`=====================================`)
+console.log(`.href`)
+console.log(url1.href)
+console.log(`=====================================`)
+console.log(`.ptotocol`)
+console.log(url1.protocol)
+console.log(`=====================================`)
+console.log(`.pathname`)
+console.log(url1.pathname)
+console.log(`=====================================`)
+console.log(`.origin`)
+console.log(url1.origin)
+console.log(`=====================================`)
+console.log(`.host`)
+console.log(url1.host)
+console.log(`=====================================`)
+console.log(`.hostname`)
+console.log(url1.hostname)
+console.log(`=====================================`)
+console.log(`.port`)
+console.log(url1.port)
+console.log(`=====================================`)
+console.log(`.hash`)
+console.log(url1.hash)
+console.log(url1.hash.slice(1))
+console.log(`=====================================`)
+console.log(`.password`)
+console.log(url1.password)
+console.log(`=====================================`)
+console.log(`.username`)
+console.log(url1.username)
+
+console.log(`=====================================`)
+console.log(`.search`)
+console.log(url1.search)
+console.log(`=====================================`)
+console.log(`.searchParams`)
+console.log(url1.searchParams)
+console.log(url1.searchParams.has('q'))
+console.log(url1.searchParams.append('name', 'google'))
+console.log(url1.searchParams)
+console.log(url1.searchParams.delete('name'))
+console.log(url1.searchParams)
+console.log(url1.searchParams.get('q'))
+console.log(url1.searchParams.getAll('q'))
+// url1.searchParams.sort()
+// console.log(url1.searchParams)
+
+const url3 = new URL('https://www.google.com/search')
+url3.searchParams.append('q', 'dog photo')
+console.log(url3.href)
