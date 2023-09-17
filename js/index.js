@@ -1164,3 +1164,117 @@ console.log(url1.searchParams.getAll('q'))
 const url3 = new URL('https://www.google.com/search')
 url3.searchParams.append('q', 'dog photo')
 console.log(url3.href)
+
+console.log('')
+console.log('Lesson 23 Датат та час Date')
+console.log(`=====================================`)
+console.log(`new Date(arg)`)
+
+const date1 = new Date()
+console.log(date1) // time local + gmt 0
+
+console.log(`=====================================`)
+console.log(`toISOString()`)
+
+const dateString = date1.toISOString()
+console.log(dateString) // string in gmt 0
+console.log(new Date(dateString))
+
+console.log(`=====================================`)
+console.log(`Date.parse()`)
+
+const date2 = Date.parse(dateString)
+console.log(date2) //in ms since 01.01.1970 00:00:00 =
+
+const date3 = Date.parse(dateString) + 1000 * 60 * 5 // додаєм 5хв до часу, що зараз (new Date())
+console.log(date2)
+console.log(date3)
+
+console.log(`=====================================`)
+console.log(
+  `.toString(), .toUTCString(), .toTimeString(), .toDateString()`,
+)
+
+console.log(date1) // 2023-09-17T12:07:23.527Z
+console.log(date1.toISOString()) // 2023-09-17T12:07:23.527Z
+console.log(date1.toString()) //Sun Sep 17 2023 15:07:23 GMT+0300 (за східноєвропейським літнім часом)
+console.log(date1.toUTCString()) //Sun, 17 Sep 2023 12:07:23 GMT
+console.log(date1.toTimeString()) //15:07:23 GMT+0300 (за східноєвропейським літнім часом)
+console.log(date1.toDateString()) //Sun Sep 17 2023
+
+console.log(`=====================================`)
+console.log(`.getTimezoneOffset() / -60`)
+
+let zone = date1.getTimezoneOffset() / -60
+console.log(zone)
+
+console.log(`=====================================`)
+console.log(`Date.now()`)
+const user = -3
+function getUserTimeZone(timezone) {
+  let date = Date.now() // in millieconds since 01.01.1970 00:00:00
+  const myTimezone = new Date().getTimezoneOffset() / -60
+  //   console.log(myTimezone)
+  date -= 1000 * 60 * 60 * myTimezone
+  date += 1000 * 60 * 60 * timezone
+  return date
+}
+// console.log(getUserTimeZone(user))
+// console.log(new Date(1694953618664).toString())
+console.log(new Date(getUserTimeZone(user)).toString()) // час user
+console.log(new Date().toUTCString()) // час  GMT 0
+console.log(new Date().toString()) // мій час
+
+console.log(`=====================================`)
+
+function getUserTime(timezone) {
+  let date = new Date(Date.UTC(2023, 5, 26, 12, 30, 0, 0)) // створюємо конкретну датут та час у форматі UTC
+  console.log(date)
+  console.log(date.toString()) // створена дата та час, але час з поправкою на мій часовий пояс Mon Jun 26 2023 15:30:00 GMT+0300 (за східноєвропейським літнім часом)
+  console.log(date.toUTCString()) // створена дата у UTC з GMT 0 (час збігається зі створенним у UTC)
+  console.log(date.getTime()) // 1687782600000
+  console.log(new Date(1687782600000).toUTCString()) // зворотнє перетворення
+
+  console.log('year', date.getFullYear())
+  //   date.setFullYear(2020)
+  //   console.log(date.getFullYear())
+
+  console.log('month', date.getMonth())
+  //   date.setMonth(0)
+  //   console.log('month', date.getMonth())
+
+  console.log('Date', date.getDate())
+  //   date.setDate(31)						//Jun has 30 days
+  //   console.log('Date', date.getDate()) // 1st Jul
+
+  console.log('Day', date.getDay()) // 0-6 1=tuesday
+
+  console.log('minutes', date.getMinutes())
+  //   date.setMinutes(59)
+  //   console.log('minutes', date.getMinutes())
+
+  console.log('seconds', date.getSeconds())
+  //   date.setSeconds(59)
+  //   console.log('seconds', date.getseconds())
+
+  console.log('Milliseconds', date.getMilliseconds())
+  //   date.setMilliseconds(59)
+  //   console.log('Milliseconds', date.getMilliseconds()) 0-999
+
+  //   console.log(
+  //     new Date(
+  //       date.setTime(
+  //         date.getTime() + 1000 * 60 * 60 * timezone,
+  //       ),
+  //     ).toUTCString(),
+  //   ) // час користувача за UTC враховуючи його часовий пояс
+
+  console.log('Hours of my timezone', date.getHours()) //години створенного часу з мого часового поясу
+  console.log('UTC Hours', date.getUTCHours()) //години з UTC
+
+  date.setHours(date.getUTCHours() + timezone)
+  return date
+}
+const UserDate = getUserTime(user)
+console.log(UserDate)
+console.log(UserDate.toString())
