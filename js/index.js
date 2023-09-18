@@ -1278,3 +1278,125 @@ function getUserTime(timezone) {
 const UserDate = getUserTime(user)
 console.log(UserDate)
 console.log(UserDate.toString())
+
+console.log(``)
+console.log('Lesson 24 Math')
+console.log(`=====================================`)
+console.log(`Math.PI`)
+console.log(Math.PI)
+
+console.log(`=====================================`)
+console.log(`Math.max() Math.min()`)
+
+const a = 5
+const b = 10
+const c = -5
+const d = 0
+const e = -0
+const text = 'text'
+const arr14 = [11, 14, 13]
+console.log(Math.max(a, b, c, ...arr14))
+console.log(Math.min(a, b, c, ...arr14))
+
+console.log(`=====================================`)
+console.log(`Math.sign(x)`)
+
+console.log(Math.sign(a))
+console.log(Math.sign(c))
+console.log(Math.sign(text))
+console.log(Math.sign(d))
+console.log(Math.sign(e))
+
+console.log(`=====================================`)
+console.log(`Math.pow(base, exponent)`)
+
+console.log(Math.pow(3, 2))
+console.log(Math.pow(3, 3))
+console.log(Math.pow(3, 4))
+
+console.log(Math.pow(a, 3))
+
+console.log(`=====================================`)
+console.log(`Math.sqrt(x)`)
+
+console.log(Math.sqrt(25))
+
+console.log(`=====================================`)
+console.log(
+  `Math.floor(x), Math.ceil(x), Math.round(x), Math.trunc(x) `,
+)
+console.log(
+  `Math.floor(x) - округлення до найменшого цілого`,
+)
+console.log(Math.floor(-5.6))
+console.log(Math.floor(-5.5))
+console.log(Math.floor(-5.4))
+console.log(Math.floor(-5))
+console.log(Math.floor(-0))
+console.log(Math.floor(5))
+console.log(Math.floor(5.4))
+console.log(Math.floor(5.5))
+console.log(Math.floor(5.6))
+
+console.log(
+  `Math.ceil(x) - округлення до найбільшого цілого`,
+)
+console.log(Math.ceil(-5.6))
+console.log(Math.ceil(-5.5))
+console.log(Math.ceil(-5.4))
+console.log(Math.ceil(-5))
+console.log(Math.ceil(-0))
+console.log(Math.ceil(5))
+console.log(Math.ceil(5.4))
+console.log(Math.ceil(5.5))
+console.log(Math.ceil(5.6))
+
+console.log(
+  `Math.round(x) - округлення до цілого стандартне (0.5 - у більшу)`,
+)
+console.log(Math.round(-5.6))
+console.log(Math.round(-5.5))
+console.log(Math.round(-5.4))
+console.log(Math.round(-5))
+console.log(Math.round(-0))
+console.log(Math.round(5))
+console.log(Math.round(5.4))
+console.log(Math.round(5.5))
+console.log(Math.round(5.6))
+
+console.log(
+  `Math.trunc(x) - відкидає десяткові числа (після крапки)`,
+)
+console.log(Math.trunc(-5.6))
+console.log(Math.trunc(-5.5))
+console.log(Math.trunc(-5.4))
+console.log(Math.trunc(-5))
+console.log(Math.trunc(-0))
+console.log(Math.trunc(5))
+console.log(Math.trunc(5.4))
+console.log(Math.trunc(5.5))
+console.log(Math.trunc(5.6))
+
+console.log(`=====================================`)
+console.log(`Math.random() від 0(включно) до 1(виключно)`)
+
+console.log(Math.random())
+console.log(Math.round(Math.random() * 100)) // 0- 100
+
+const random = Math.trunc(Math.random() * 10) + 1 //від 1 до 10
+console.log(random)
+
+console.log(`=====================================`)
+console.log(`Math.fround(x)`)
+
+const f = 0.1
+const g = 0.2
+const h = 0.3
+
+console.log(0.1 + 0.2)
+console.log(f + g === h)
+console.log(Math.fround(f + g) === Math.fround(h))
+console.log(f + g)
+console.log(Math.fround(f + g))
+console.log(h)
+console.log(Math.fround(h))
