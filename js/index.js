@@ -1400,3 +1400,109 @@ console.log(f + g)
 console.log(Math.fround(f + g))
 console.log(h)
 console.log(Math.fround(h))
+
+console.log(``)
+console.log('Lesson 25 Console')
+console.log(`=====================================`)
+console.log(
+  `.error() .exception() .info() .warn() .log() .debug()`,
+)
+
+console.log('see it in browser!')
+console.error(`Error! Червоним у консолі браузера`)
+console.exception //() Взагалі незрозуміла річ. ніде не працює
+console.info(`Info`)
+console.warn(`Warn! Жовтим у консолі браузера`)
+console.log(`Log`)
+console.debug(`Debug`)
+
+console.log(`=====================================`)
+console.log(
+  `.group(label) .groupCollapsed(label) .groupEnd()`,
+)
+
+console.group('Group1')
+console.log('Це повідомлення у групі')
+console.groupEnd()
+console.groupCollapsed('group2')
+console.log('Це повідомлення у групі')
+console.groupEnd()
+
+console.log(`=====================================`)
+console.log(`.time(label) .timeLog(label) .timeEnd(label)`)
+
+const counterLabel = 'Timer'
+console.time(counterLabel)
+console.log(
+  'Код, час виконання якого вимірюється таймерром',
+)
+const time = new Date()
+console.log('Додатковий таймер')
+console.timeLog(counterLabel)
+console.log(time.toUTCString())
+console.log('Остаточний таймер')
+console.timeEnd(counterLabel)
+
+console.log(`=====================================`)
+console.log(`.count(label) .countReset(label)`)
+
+const counter = 'лічильник'
+console.log('Код кількість виконання якого рахується')
+let a1 = 0
+for (i = 0; i <= 3; i++) {
+  console.count(counter)
+  a1 = new Date()
+}
+console.log(a1)
+console.countReset(counter)
+
+console.log(`=====================================`)
+console.log('Стек виклику')
+console.log(`.trace(value1, value2, ...valueN)`)
+
+const test1 = () => console.trace('Hello')
+const test2 = () => test1()
+const test3 = () => test2()
+test3()
+
+console.log(`=====================================`)
+console.log(`.table(data, columns)`)
+
+console.log(data)
+console.table(data)
+const data1 = [
+  { name: 'John', age: 25, city: 'New York' },
+  { name: 'Alice', age: 30, city: 'London' },
+]
+console.log(data1)
+console.table(data1, ['name', 'city'])
+
+console.log(`=====================================`)
+console.log(`.assert(assertion, value1, value2, ...valueN)`)
+
+const a2 = 5
+const b2 = 10
+if (a2 > b2) {
+  //.......
+} else {
+  console.warn('Умова не виконалася!')
+}
+
+const a3 = 5
+const b3 = 10
+const result11 = a > b
+console.assert(result11, 'Умова не виконалася!')
+
+console.log(`=====================================`)
+console.log(`.clear()`)
+
+// console.clear()  //відчищає вивід консолі
+
+console.log(`=====================================`)
+console.log('Стилізація')
+console.log(`%с`)
+
+console.log(
+  '%cСлава Україні',
+  'font-size: 50px; color: blue; background: yellow',
+)
