@@ -1506,3 +1506,110 @@ console.log(
   '%cСлава Україні',
   'font-size: 50px; color: blue; background: yellow',
 )
+
+console.log('')
+console.log('Lesson 26 RegExp')
+console.log(`=====================================`)
+console.log(`https://regex101.com/`)
+
+console.log('')
+console.log('Lesson 27 RegExp')
+console.log(`=====================================`)
+console.log(
+  `new RegExp (pattern, flags), RegExp(pattern, flags)`,
+)
+console.log(`/pattern/flags`)
+
+const regexp = /test/gims
+console.log(regexp)
+
+const regexp1 = RegExp('test', 'g')
+console.log(regexp1)
+
+console.log(`=====================================`)
+console.log('.flags')
+
+console.log(regexp.flags)
+
+console.log(`=====================================`)
+console.log('.global')
+
+console.log(regexp.global)
+
+console.log(`=====================================`)
+console.log('.multiline')
+
+console.log(regexp.multiline)
+console.log(regexp1.multiline)
+
+console.log(`=====================================`)
+console.log('.dotAll')
+
+console.log(regexp.dotAll)
+console.log(regexp1.dotAll)
+
+console.log(`=====================================`)
+console.log('.ignoreCase')
+
+console.log(regexp.ignoreCase)
+console.log(regexp1.ignoreCase)
+
+console.log(`=====================================`)
+console.log('.exec(str)')
+
+const result12 = regexp.exec('This is test')
+console.log(result12)
+
+const regexp2 = /(?<group1>.e)(?<group2>st)/gims
+const result13 = regexp2.exec('This is test and est')
+console.log(result13)
+console.log(result13[0])
+console.log(result13[1])
+console.log(result13[2])
+
+console.log(`=====================================`)
+console.log('.groups')
+console.log(result13.groups)
+
+console.log(`=====================================`)
+console.log('.exec .test')
+// console.log(regexp2.exec('This is test and est')) // повторний виклик .exec із флагом global(g) продовжуе шукати індекс наступного збігу
+// console.log(regexp2.exec('This is test and est')) // null, коли закінчились збіги
+
+// console.log(regexp2.test('This is test and est')) // true поки знаходить збіги
+// console.log(regexp2.test('This is test and est')) // null, коли закінчились збіги
+
+console.log(`=====================================`)
+console.log('.source')
+
+console.log(regexp2.source)
+
+console.log(`=====================================`)
+console.log('.lastIndex')
+
+regexp2.lastIndex = 9
+console.log(regexp2.exec('This is test and est')) // пропусте індекс 8 та знайде 16й
+console.log(regexp2.exec('This is test and est')) // після 16 буе null
+
+console.log(`=====================================`)
+console.log(
+  'replace(pattern, replacement) replaceAll(pattern, replacement)',
+)
+
+const teststr = 'This is test and est'
+console.log(teststr.replace(regexp2, '###'))
+
+console.log(`=====================================`)
+console.log('.search()')
+
+console.log(teststr.search(regexp2)) // індекс першого знайденого
+
+console.log(`=====================================`)
+console.log('.match(), matchAll()')
+
+console.log(teststr.match(regexp2))
+console.log(teststr.matchAll(regexp2)) // iterator
+const result14 = teststr.matchAll(regexp2)
+console.log(result14.next())
+console.log(result14.next())
+console.log(result14.next())
