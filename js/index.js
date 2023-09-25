@@ -1613,3 +1613,101 @@ const result14 = teststr.matchAll(regexp2)
 console.log(result14.next())
 console.log(result14.next())
 console.log(result14.next())
+
+console.log('')
+console.log('Lesson 28 Errors')
+console.log(`=====================================`)
+console.log('Обробка помилок try catch finaly')
+
+try {
+  const aa = 10
+  aa = 5
+  console.log(
+    `Місце у блоці try після винекнення помилки вже не виконується`,
+  )
+  console.log('try block - no errors')
+} catch (err) {
+  console.log('Сталася помилка у блоці try')
+  console.log(err)
+} finally {
+  console.log(
+    `Обов'язково спрацює після перевірки помилки, не залежно від того чи виникла помилка.`,
+    `частіше за все вкористовують для логування виконання обробки помилки`,
+  )
+}
+
+console.log('Продовжуємо працювати')
+
+console.log(`=====================================`)
+console.log(
+  'Error(message, options). options - stack, cause.  throw',
+)
+
+function getUserData(userId) {
+  try {
+    const a = 10
+    a = 5
+    // ...робить запит до БД
+  } catch (err) {
+    // - помилка про те, що данні з сервера не можуть бути отримані
+    throw new Error(
+      `Помилка. Неможливо отримати данні користувача ${userId}`,
+      {
+        cause: err,
+      },
+    )
+  }
+}
+
+function updateUserData(userId) {
+  try {
+    const data = getUserData(userId)
+    data.name = 'Ivan'
+    //...
+  } catch (err) {
+    const newError1 = new Error(
+      `Помилка. Неможливо оновити данні користувача ${userId}`,
+      {
+        cause: err,
+      },
+    )
+    console.log(newError1)
+    //   console.log(newError1.message)
+  }
+}
+
+updateUserData('Микола')
+
+console.log(`=====================================`)
+console.log('.message .name')
+
+const ERROR_ID_LIST = {
+  NOT_NUMBER: 'Помилка!',
+}
+
+function sumNum(a, b) {
+  if (typeof a !== 'number' || typeof b !== 'number') {
+    const error = new TypeError(
+      'Всі аргументи повинні бути числами',
+      {
+        cause: 'Бо так треба',
+      },
+    )
+    error.name = ERROR_ID_LIST.NOT_NUMBER
+    throw error
+  }
+  return a + b
+}
+
+try {
+  sumNum(1, 'abc')
+} catch (err) {
+  console.log(err.name) // Помилка!
+  console.log(err.message) // Всі аргументи повинні бути числами
+  console.log(err.cause) // Бо так треба
+  console.log(err.stack)
+  console.log(err.toString()) // .name+.message
+  //   if (err.name === ERROR_ID_LIST.NOT_NUMBER) {
+  //     console.log(sumNum(10, 0))
+  //   }
+}
