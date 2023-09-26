@@ -1711,3 +1711,217 @@ try {
   //     console.log(sumNum(10, 0))
   //   }
 }
+
+console.log('')
+console.log('Lesson 29 Prototype ООП')
+console.log(`=====================================`)
+console.log('Object.create(proto, properties)')
+console.log('')
+
+let Animal = {
+  name: `Тваринка`,
+  voice: 'Звук',
+  say() {
+    console.log(`${this.name} каже ${this.voice}`)
+  },
+}
+
+const dog = { ...Animal, name: 'Бобік' }
+// dog.name = 'Бобік'
+dog.voice = 'Гав'
+
+dog.say()
+console.log(dog)
+
+Animal.go = function () {
+  console.log(`${this.name} біжить`)
+}
+// dog.go() // буде помилка, бо нема такої функції у dog
+
+const cat = Object.create(Animal)
+cat.name = 'Мурзік'
+cat.voice = `М'яв`
+
+cat.say()
+console.log(cat)
+cat.go()
+
+console.log(`=====================================`)
+console.log(`obj.__proto__  = Object.getPrototypeOf(obj)`)
+
+console.log(cat.__proto__)
+console.log(Object.getPrototypeOf(cat))
+
+console.log(`=====================================`)
+console.log(`.isPrototypeOf(obj)`)
+
+console.log(Object.getPrototypeOf(cat) === Animal)
+console.log(Animal.isPrototypeOf(cat))
+
+console.log(`=====================================`)
+console.log(`Object.setPrototypeOf(obj, prototype)`)
+
+Object.setPrototypeOf(cat, null) // Видаляємо прототип у cat
+console.log(Object.getPrototypeOf(cat))
+console.log(Object.getPrototypeOf(dog))
+
+Object.setPrototypeOf(cat, { asd: '1243' })
+console.log(Object.getPrototypeOf(cat))
+
+console.log(`=====================================`)
+console.log(`Інкапсуляція - приховування властивостей`)
+console.log(
+  `Object.defineProperty(obj, prop, descriptor)  Object.defineProperties(obj, props)`,
+)
+
+const duck = Object.create(Animal)
+duck.name = 'Утя'
+duck.voice = `Кря`
+
+duck.say()
+console.log(duck)
+
+Object.defineProperty(duck, '_age', {
+  // Приховування _age
+  value: 7,
+  writable: true,
+})
+
+Object.defineProperty(duck, 'age', {
+  set(value) {
+    this._age = value * 2
+  },
+  get() {
+    return `${this._age} років`
+  },
+})
+
+console.log(duck._age)
+
+console.log(duck.age)
+duck.age = 3
+console.log(duck.age)
+duck.age = 5
+console.log(duck.age)
+// delete duck.age
+// console.log(duck.age)
+
+console.log(duck._age)
+
+console.log(duck)
+// delete duck._age
+console.log(Object.keys(duck))
+
+Object.defineProperty(duck, 'location', {
+  value: 'Ukraine',
+  writable: true, // дозволяє змінювати
+  //   configurable: true, // дозволяє видаляти та змінюати
+  enumerable: true, // чи буде перераховуватись при ітерації
+})
+
+console.log(duck.location)
+delete duck.location
+console.log(duck.location)
+
+console.log(Object.keys(duck))
+
+console.log(`=====================================`)
+console.log(
+  `Object.getOwnPropertyDescriptor(obj, prop)  Object.getOwnPropertyDescriptors(obj)`,
+)
+
+Object.defineProperty(duck, '_space', {
+  // Приховування _space
+  value: 1,
+  writable: true,
+})
+
+Object.defineProperty(duck, 'space', {
+  set(value) {
+    this._space = value * 4
+  },
+  get() {
+    return `${this._space}px`
+  },
+})
+console.log(duck.space)
+duck.space = 4
+console.log(duck.space)
+
+console.log(Object.getOwnPropertyDescriptor(duck, 'space'))
+console.log(Object.getOwnPropertyDescriptor(duck, '_space'))
+
+console.log(`=====================================`)
+console.log(`.hasOwnProperty(prop)`)
+
+console.log(Object.keys(duck))
+console.log(duck.hasOwnProperty('space'))
+console.log(duck.hasOwnProperty('_space'))
+
+console.log(`=====================================`)
+console.log(
+  `Поліморфізм - у різних об'єктів однакові методи, але їх дії різні`,
+)
+console.log(``)
+
+const Tag = {
+  render(value) {
+    return `<>${value}<>`
+  },
+}
+
+const Button = Object.create(Tag)
+Button.render = function (value = '') {
+  return `<button style="${this.style}">${value}</button>`
+}
+
+const mainButton = Object.create(Button, {
+  style: {
+    value: 'background: red',
+    writable: true,
+  },
+})
+
+console.log(mainButton.render('Кнопка'))
+
+const Input = Object.create(Tag)
+Input.render = function () {
+  return `<input placeholder="${this.placeholder}" style="${this.style}"/>`
+}
+
+const loginInput = Object.create(Input, {
+  style: {
+    value: 'background: grey; border: 1px solid red',
+    writable: true,
+  },
+  placeholder: {
+    value: 'input your login (email or tel)',
+  },
+})
+
+console.log(loginInput.render())
+
+const serverRequest = {
+  data: null,
+  getData() {
+    ////....
+  },
+  render() {
+    this.data = this.getData()
+
+    return `.......`
+  },
+}
+
+console.log(`=====================================`)
+console.log(
+  `Абстракція - загалні властивості та методи об'єктів`,
+)
+
+const Page = {
+  components: [],
+  path: '/.../.../ ',
+  render() {
+    //....
+  },
+}
