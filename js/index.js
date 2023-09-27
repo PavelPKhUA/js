@@ -1925,3 +1925,249 @@ const Page = {
     //....
   },
 }
+
+console.log('')
+console.log('Lesson 30 Функція-конструктор')
+console.log(`=====================================`)
+console.log('Синтетеичний цукор)')
+console.log('')
+
+const User = {
+  login: null,
+  password: null,
+  role: null,
+  age: null,
+  //...
+  //...
+  //...
+  //...
+}
+
+// Для короткого запису робимо функцію
+function createUser({ login, password, isAdmin }) {
+  return Object.create(User, {
+    login: {
+      value: login,
+    },
+    password: {
+      value: password,
+    },
+    role: {
+      value: this.isAdmin ? 'Admin' : 'User',
+    },
+    verify: {
+      value(password) {
+        return this.password === password
+      },
+    },
+  })
+}
+
+const rgisterData = {
+  login: 'Ivan',
+  password: '123qwe342',
+}
+
+// короткий запис
+const user3 = createUser(rgisterData)
+// або:
+// const user3 = Object.create(User, {
+//   login: {
+//     value: rgisterData.login,
+//   },
+//   password: {
+//     value: rgisterData.password,
+//   },
+//   verify: {
+//     value(password) {
+//       return this.password === password
+//     },
+//   },
+// })
+
+console.log(user3.login)
+console.log(user3.verify('iydiclxj'))
+
+const adminData = {
+  login: 'Artem',
+  password: '123qwe300000042',
+  isAdmin: true,
+  age: 50,
+}
+
+// короткий запис
+const admin = createUser(adminData)
+// або:
+// const adminUser3 = Object.create(User, {
+//   login: {
+//     value: adminData.login,
+//   },
+//   password: {
+//     value: adminData.password,
+//   },
+//   role: {
+//     value: adminData.isAdmin ? 'Admin' : 'User',
+//   },
+//   verify: {
+//     value(password) {
+//       return this.password === password
+//     },
+//   },
+// })
+
+const testData = {
+  login: 'Vasil',
+  password: '288sfrt564',
+}
+const testUser = createUser(testData)
+console.log(testUser.login)
+console.log(testUser.password)
+console.log(testUser.role)
+
+// Функція-конструктор
+function MakeUser({
+  login = null,
+  password = null,
+  isAdmin = null,
+  age = 0,
+}) {
+  console.log('new', new.target)
+  this.login = login
+  this.password = password
+  this.role = isAdmin ? 'Admin' : 'User'
+  this.age = age
+  this.verify = function (password) {
+    return this.password === password
+  }
+  //...
+  //...
+  //...
+  //...
+}
+
+const user4 = new MakeUser(rgisterData)
+console.log(user4.login)
+
+console.log(`=====================================`)
+console.log('new.target')
+
+// Функція-конструктор
+function MakeAdmin(data) {
+  if (new.target) {
+    const {
+      login = null,
+      password = null,
+      isAdmin = null,
+      age = 0,
+    } = data
+
+    const role = isAdmin ? 'Admin' : 'User'
+
+    const object = Object.assign(this, {
+      login,
+      password,
+      role,
+      age,
+    })
+
+    if (role === 'Admin') {
+      object.verify = function (password) {
+        console.debug(password, this.password)
+        return this.password === password
+      }
+    }
+    if (age >= 50) {
+      object.login = String(object.login).toUpperCase()
+    }
+
+    //   переназначення функції toString()
+    object.toString = function () {
+      return `Користувач ${this.login}`
+    }
+
+    //...
+    //...
+    //...
+    //...
+
+    return object
+  } else {
+    return new MakeAdmin(data) // передбачаємо, що можуть забути поставити new при виклику
+  }
+}
+
+const admin1 = MakeAdmin(adminData) // забули поставити new
+console.log(admin1.login)
+console.log(admin1.password)
+console.log(admin1.role)
+
+console.log(`=====================================`)
+console.log('prototype  Object.assign(this, obj) ')
+
+console.log(
+  Object.getPrototypeOf(admin1) === MakeAdmin.prototype,
+)
+
+console.log(`=====================================`)
+console.log('valueOf()  toString()')
+
+console.log(admin1.toString()) // див. вище переназначення функції toString() для MakeAdmin
+
+console.log(`=====================================`)
+console.log('.length')
+
+console.log(MakeAdmin.length)
+
+console.log(`=====================================`)
+console.log('.name')
+
+const testAdm = MakeAdmin
+console.log(testAdm.name)
+
+console.log(`=====================================`)
+console.log('Просунута робота з функціями .apply ')
+
+console.log(user4.verify(`123qwe342`))
+const verifyUser = user4.verify
+console.log(verifyUser`123qwe342`) // загубилася прив'язка this
+
+console.log(admin1.verify(`123qwe300000042`))
+const verifyAdm = admin1.verify
+console.log(verifyAdm.apply(admin1, [`123qwe300000042`])) // повертаємо зв'язок this функції з об'єктом admin1
+
+console.log(`=====================================`)
+console.log(
+  `При створенні нової функції, щоб прив'язати її ("вмонтувати") до певного об'єкта .bind`,
+)
+
+const verifyUser2 = user4.verify.bind(user4, `123qwe342`)
+console.log(verifyUser2())
+
+console.log(`=====================================`)
+console.log(`Приклади використання .call та .apply`)
+
+function Animal2(name) {
+  this.name = name
+}
+
+function Person(name, age) {
+  Animal2.call(this, name)
+  this.age = age
+}
+
+function Person2(name, age) {
+  Animal2.apply(this, [name])
+  this.age = age
+}
+
+const Person3 = function (name, age) {
+  Animal2.apply(this, [name])
+  this.age = age
+}
+
+const user5 = new Person('Kate', 32)
+console.log(user5.name)
+const user6 = new Person2('Nasty', 35)
+console.log(user6.name)
+const user7 = new Person3('Nata', 36)
+console.log(user7.name)
