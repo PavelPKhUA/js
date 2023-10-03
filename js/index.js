@@ -2171,3 +2171,156 @@ const user6 = new Person2('Nasty', 35)
 console.log(user6.name)
 const user7 = new Person3('Nata', 36)
 console.log(user7.name)
+
+console.log('')
+console.log('Lesson 31 Класи')
+console.log(`=====================================`)
+console.log(`class Name { ... }`)
+console.log('')
+
+// const User2 = {
+//   login: null,
+//   password: null,
+//   role: null,
+//   age: null,
+// }
+
+// function Animal2() {
+//   this.test = 'Hello world'
+// }
+
+// function UserF({ login, password, role, age }) {
+//   Animal2.call(this)
+
+//   this.login = login
+//   this.password = password
+//   this.role = role
+//   this.age = age
+
+//   Object.defineProperties(this, {
+//     name: {
+//       get() {},
+//       set() {},
+//     },
+//   })
+// }
+
+// console.log(new UserF({}).test)
+
+class Person1 {
+  constructor(name) {
+    this.name = name
+  }
+  test = () => {
+    console.log('Hello World', this.name)
+  }
+}
+
+class User1 extends Person1 {
+  constructor(login, password) {
+    super(login)
+    this.login = login
+    this.password = password
+  }
+  //   login = null
+  //   password = null
+  #role = null
+  static age = null
+  id = null
+  #id = 1000
+  age = null
+  //   isAdmin() {
+  //     return this.role === 'Admin'
+  //   }
+  isAdmin = () => {
+    // Додаємо стрілкову функцію, щоб не загубити внутрішній this при створенні нової змінної за допомогою цього класу
+    console.log(this.#id)
+    this.#createAdminUser()
+    return this.role === 'Admin'
+  }
+  //   verify(user1, user2) {
+  //     return user1.login === user2.login
+  //   }
+  #createAdminUser = (login) => {
+    // const password = this.generateRandomPassword()
+    return new User1()
+  }
+
+  static generateRandomPassword = () => {
+    //......
+    return `Новий пароль сгенеровано`
+  }
+  get admin() {
+    return this.#role === 'Admin'
+  }
+  set admin(value) {
+    this.#role = 'Admin'
+  }
+}
+
+const user8 = new User1()
+
+console.log(user8)
+console.log(typeof user8)
+console.log(user8.__proto__)
+console.log(user8.prototype)
+console.log(User1.prototype)
+console.log(User1.prototype === user8.__proto__) // true
+console.log(User1.prototype.isPrototypeOf(user8)) //true
+
+console.log(user8.isAdmin())
+
+function verifyAdmin(fn) {
+  const result = fn()
+  if (!result) {
+    throw new Error('Не адмін')
+  }
+  return true
+}
+
+// verifyAdmin(user8.isAdmin) // не знайде відв'язаний this без стрілкової функції
+// verifyAdmin(user8.isAdmin.bind(this)) // працює без стрілкової функції, але не зручно
+// verifyAdmin(user8.isAdmin) //працює зі стрілковою функцією
+
+console.log(`=====================================`)
+console.log(`static назва метода або властивості`)
+console.log('')
+
+console.log(user8)
+console.log(User1)
+
+console.log(User1.generateRandomPassword()) // використання статичної функції класу (доступна з зовні)
+
+console.log(`=====================================`)
+console.log(
+  `# приватне поле (недоступне з зовні). Працюють з get та set`,
+)
+console.log('')
+
+console.log(user8.admin)
+user8.admin = 'value'
+console.log(user8.admin)
+console.log(`=====================================`)
+console.log(`constructor (аргументи) { ... }`)
+console.log('')
+
+console.log(user8)
+
+const user9 = new User1('dtrtd@iuokl.com', 'tsm;omi7865765')
+console.log(user9)
+
+console.log(`=====================================`)
+console.log(`class Name extends ParentClassName`)
+console.log('')
+
+console.log(user9.test())
+
+console.log(`=====================================`)
+console.log(`Object.assign`)
+console.log('')
+
+console.log(`=====================================`)
+console.log(`instanceof`)
+console.log('')
+
+console.log(user8 instanceof User1) //true
